@@ -1,0 +1,16 @@
+GET_RELATIONSHIP Shan Son
+GET_RELATIONSHIP Chit Siblings
+GET_RELATIONSHIP Shan Daughter
+GET_RELATIONSHIP Tritha Paternal-Uncle
+GET_RELATIONSHIP Atya Maternal-Uncle
+GET_RELATIONSHIP Vasa Maternal-Aunt
+GET_RELATIONSHIP Vasa Paternal-Aunt
+GET_RELATIONSHIP Jaya Sister-In-Law
+GET_RELATIONSHIP Arit Brother-In-Law
+GET_RELATIONSHIP Vila Son
+ADD_CHILD Vyan Sai Male
+ADD_CHILD Naveen Sai Male
+GET_RELATIONSHIP Naveen Son
+ADD_CHILD Krithi Naveen Male
+GET_RELATIONSHIP Ish Sister-In-Law
+GET_RELATIONSHIP Tritha Brother-In-Law

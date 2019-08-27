@@ -1,0 +1,16 @@
+GET_RELATIONSHIP Shan Son,               Chit Ish Vich Aras
+GET_RELATIONSHIP Chit Siblings,          Ish Vich Aras Satya 
+GET_RELATIONSHIP Shan Daughter,          Satya 
+GET_RELATIONSHIP Tritha Paternal-Uncle,  Ish Vich Aras
+GET_RELATIONSHIP Atya Maternal-Uncle,    Chit Ish Vich Aras 
+GET_RELATIONSHIP Vasa Maternal-Aunt,     NONE
+GET_RELATIONSHIP Vasa Paternal-Aunt,     Atya
+GET_RELATIONSHIP Jaya Sister-In-Law,     Tritha 
+GET_RELATIONSHIP Arit Brother-In-Law,    Ahit
+GET_RELATIONSHIP Vila Son,               NONE
+ADD_CHILD Vyan Sai Male,                 CHILD_ADDITION_FAILED
+ADD_CHILD Naveen Sai Male,               PERSON_NOT_FOUND
+GET_RELATIONSHIP Naveen Son,             PERSON_NOT_FOUND
+ADD_CHILD Krithi Naveen Male,            PERSON_NOT_MARRIED
+GET_RELATIONSHIP Ish Sister-In-Law,      Amba Lika Chitra
+GET_RELATIONSHIP Tritha Brother-In-Law,  Jaya 

@@ -2,8 +2,10 @@ package familyTree;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import commands.Command;
+import model.Person;
 import utility.DataReader;
 
 public class Family {
@@ -51,14 +53,8 @@ public class Family {
 		}
 
 		else {
-
-			List<String> nameList = new ArrayList<String>();
-			for (Person p : personRelationList) {
-				if (p != null) {
-					nameList.add(p.toString());
-				}
-			}
-			result = String.join(" ", nameList);
+			result = personRelationList.stream().filter(p -> p != null).map(Person::toString)
+					.collect(Collectors.joining(" "));
 		}
 
 		return result;

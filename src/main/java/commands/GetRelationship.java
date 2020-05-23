@@ -1,10 +1,9 @@
 package commands;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import familyTree.Family;
-import familyTree.Person;
+import model.Person;
 
 public class GetRelationship extends Command {
 

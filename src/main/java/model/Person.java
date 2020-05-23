@@ -1,7 +1,7 @@
-package familyTree;
+package model;
 
 import java.util.*;
-import utility.Gender;
+import java.util.stream.Collectors;
 
 /**
  * 
@@ -41,7 +41,7 @@ public class Person {
 		return spouse;
 	}
 
-	protected void setSpouse(Person spouse) {
+	public void setSpouse(Person spouse) {
 		this.spouse = spouse;
 	}
 
@@ -74,26 +74,15 @@ public class Person {
 	}
 
 	public List<Person> getSons() {
-		List<Person> sons = new LinkedList<Person>();
-		List<Person> childrenList = getChildren();
-		for (Person child : childrenList) {
-			if (child.isMale()) {
-				sons.add(child);
-			}
-		}
-		return sons;
-
+		return getChildren().stream()
+				.filter(p -> p.isMale())
+				.collect(Collectors.toList());
 	}
 
 	public List<Person> getDaughters() {
-		List<Person> daughters = new LinkedList<Person>();
-		List<Person> childrenList = getChildren();
-		for (Person child : childrenList) {
-			if (child.isFemale()) {
-				daughters.add(child);
-			}
-		}
-		return daughters;
+		return getChildren().stream()
+				.filter(p -> p.isFemale())
+				.collect(Collectors.toList());
 	}
 
 	public List<Person> getSiblings() {
@@ -108,27 +97,16 @@ public class Person {
 		return siblings;
 	}
 
-	public List<Person> getBrothers() {
-		List<Person> siblings = getSiblings();
-		List<Person> brothers = new LinkedList<Person>();
-		for (Person sibling : siblings) {
-			if (sibling.isMale()) {
-				brothers.add(sibling);
-			}
-		}
-		return brothers;
+	public List<Person> getBrothers() {	
+		return getSiblings().stream()
+				.filter(Person::isMale)
+				.collect(Collectors.toList());
 	}
 
 	public List<Person> getSisters() {
-		List<Person> siblings = this.getSiblings();
-		List<Person> sisters = new LinkedList<Person>();
-		for (Person sibling : siblings) {
-			if (sibling.isFemale()) {
-				sisters.add(sibling);
-			}
-		}
-
-		return sisters;
+		return getSiblings().stream()
+				.filter(Person::isFemale)
+				.collect(Collectors.toList());
 	}
 
 	public List<Person> getBrotherInLaws() {
@@ -139,13 +117,12 @@ public class Person {
 		if (spouse != null) {
 			brothersOfSpouse = spouse.getBrothers();
 		}
-		List<Person> sisters = this.getSisters();
+		
 		List<Person> husbandsOfSisters = new LinkedList<Person>();
-		for (Person sister : sisters) {
-			Person husband = sister.getSpouse();
-			husbandsOfSisters.add(husband);
-		}
-
+		husbandsOfSisters = this.getSisters().stream()
+						 .map(sister -> sister.getSpouse())
+						 .collect(Collectors.toList());
+		
 		List<Person> brotherInLaws = new LinkedList<Person>(brothersOfSpouse);
 		brotherInLaws.addAll(husbandsOfSisters);
 		return brotherInLaws;
@@ -159,13 +136,12 @@ public class Person {
 		if (spouse != null) {
 			sistersOfSpouse = spouse.getSisters();
 		}
-		List<Person> brothers = this.getBrothers();
+		
 		List<Person> wivesOfBrothers = new LinkedList<Person>();
-		for (Person brother : brothers) {
-			Person wife = brother.getSpouse();
-			wivesOfBrothers.add(wife);
-		}
-
+		wivesOfBrothers = this.getBrothers().stream()
+						  .map(brother -> brother.getSpouse())
+						  .collect(Collectors.toList());
+		
 		List<Person> sisterInLaws = new LinkedList<Person>(sistersOfSpouse);
 		sisterInLaws.addAll(wivesOfBrothers);
 		return sisterInLaws;
@@ -174,37 +150,22 @@ public class Person {
 
 	public List<Person> getPaternalAunts() {
 		// Father's sisters
-
-		Person father = this.getMother().getSpouse();
-		List<Person> fathersSisters = father.getSisters();
-		return fathersSisters;
-
+	 return	this.getMother().getSpouse().getSisters();
 	}
 
 	public List<Person> getMaternalAunts() {
 		// Mother's Sisters
-
-		Person mother = this.getMother();
-		List<Person> sistersOfMother = mother.getSisters();
-		return sistersOfMother;
-
+		return this.getMother().getSisters();
 	}
 
 	public List<Person> getMaternalUncles() {
-		// Mother's brothers
-
-		Person mother = this.getMother();
-		List<Person> brothersOfMother = mother.getBrothers();
-		return brothersOfMother;
-
+		// Mother's brothers		
+		return this.getMother().getBrothers();
 	}
 
 	public List<Person> getPaternalUncles() {
 		// Father's brothers
-
-		Person father = this.getMother().getSpouse();
-		List<Person> brothersOfFather = father.getBrothers();
-		return brothersOfFather;
+		return this.getMother().getSpouse().getBrothers();
 	}
 
 	@Override

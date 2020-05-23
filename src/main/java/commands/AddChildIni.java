@@ -3,7 +3,7 @@ package commands;
 import java.util.List;
 
 import familyTree.Family;
-import familyTree.Person;
+import model.Person;
 
 public class AddChildIni extends Command {
 

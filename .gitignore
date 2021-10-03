@@ -16,3 +16,4 @@
 *.bak
 target
 .DS_Store
+bin

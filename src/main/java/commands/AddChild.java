@@ -14,7 +14,7 @@ public class AddChild extends AddChildIni {
 	public String execute() {
 		String result = super.execute();
 		if (result.isEmpty()) {
-			result = "CHILD_ADDITION_SUCCEDED";
+			result = "CHILD_ADDITION_SUCCEEDED";
 		}
 		return result;
 	}

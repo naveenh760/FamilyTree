@@ -17,7 +17,6 @@ public class AddSpouse extends Command {
         String result = "";
 		if (arguments.size() != 2) {
 			result = "Invalid number of arguments to ADD_SPOUSE";
-			return result;
 		} else {
 			String husbandName = arguments.get(0);
 			String wifeName = arguments.get(1);
@@ -39,8 +38,8 @@ public class AddSpouse extends Command {
 			}
 
 			Family.setSpouseRelation(husband, wife);
-            return result;
 		}
+		return result;
 
 	}
 

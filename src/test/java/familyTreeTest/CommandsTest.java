@@ -13,7 +13,7 @@ class CommandsTest {
 	static Family family = new Family();
 
 	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
+	static void setUpBeforeClass() {
 		family.buildInitialTree("./src/main/resources/InitialTree.txt");
 	}
 

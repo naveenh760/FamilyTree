@@ -4,10 +4,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * 
- */
-
-/**
  * @author NH054708
  *
  */
@@ -20,13 +16,13 @@ public class Person {
 	String name;
 	Gender gender;
 	Person mother;
-	private List<Person> children;
+	List<Person> children;
 	Person spouse;
 
 	public Person(String name, String gender) {
 		this.name = name;
 		this.gender = gender.equals("Male") ? Gender.Male : Gender.Female;
-		this.children = new ArrayList<Person>();
+		this.children = new ArrayList<>();
 	}
 
 	protected Person getMother() {
@@ -46,17 +42,11 @@ public class Person {
 	}
 
 	public boolean isMale() {
-		if (this.gender == Gender.Male) {
-			return true;
-		}
-		return false;
+		return this.gender == Gender.Male;
 	}
 
 	public boolean isFemale() {
-		if (this.gender == Gender.Female) {
-			return true;
-		}
-		return false;
+		return this.gender == Gender.Female;
 	}
 
 	public void addChild(Person child) {
@@ -75,13 +65,13 @@ public class Person {
 
 	public List<Person> getSons() {
 		return getChildren().stream()
-				.filter(p -> p.isMale())
+				.filter(Person::isMale)
 				.collect(Collectors.toList());
 	}
 
 	public List<Person> getDaughters() {
 		return getChildren().stream()
-				.filter(p -> p.isFemale())
+				.filter(Person::isFemale)
 				.collect(Collectors.toList());
 	}
 
@@ -90,10 +80,8 @@ public class Person {
 		if (mother == null) {
 			return Collections.emptyList();
 		}
-		List<Person> siblings = new LinkedList<Person>(mother.getChildren());
-		if (siblings != null) {
-			siblings.remove(this);
-		}
+		List<Person> siblings = new LinkedList<>(mother.getChildren());
+		siblings.remove(this);
 		return siblings;
 	}
 
@@ -113,17 +101,17 @@ public class Person {
 		// Spouse's brothers and Husbands of siblings
 
 		Person spouse = this.getSpouse();
-		List<Person> brothersOfSpouse = new LinkedList<Person>();
+		List<Person> brothersOfSpouse = new LinkedList<>();
 		if (spouse != null) {
 			brothersOfSpouse = spouse.getBrothers();
 		}
 		
-		List<Person> husbandsOfSisters = new LinkedList<Person>();
+		List<Person> husbandsOfSisters;
 		husbandsOfSisters = this.getSisters().stream()
-						 .map(sister -> sister.getSpouse())
+						 .map(Person::getSpouse)
 						 .collect(Collectors.toList());
 		
-		List<Person> brotherInLaws = new LinkedList<Person>(brothersOfSpouse);
+		List<Person> brotherInLaws = new LinkedList<>(brothersOfSpouse);
 		brotherInLaws.addAll(husbandsOfSisters);
 		return brotherInLaws;
 	}
@@ -132,17 +120,17 @@ public class Person {
 		// Spouse's sisters and Wives of siblings
 
 		Person spouse = this.getSpouse();
-		List<Person> sistersOfSpouse = new LinkedList<Person>();
+		List<Person> sistersOfSpouse = new LinkedList<>();
 		if (spouse != null) {
 			sistersOfSpouse = spouse.getSisters();
 		}
 		
-		List<Person> wivesOfBrothers = new LinkedList<Person>();
+		List<Person> wivesOfBrothers;
 		wivesOfBrothers = this.getBrothers().stream()
-						  .map(brother -> brother.getSpouse())
+						  .map(Person::getSpouse)
 						  .collect(Collectors.toList());
 		
-		List<Person> sisterInLaws = new LinkedList<Person>(sistersOfSpouse);
+		List<Person> sisterInLaws = new LinkedList<>(sistersOfSpouse);
 		sisterInLaws.addAll(wivesOfBrothers);
 		return sisterInLaws;
 

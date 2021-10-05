@@ -47,13 +47,13 @@ public class Family {
 	}
 
 	static public String personListToString(List<Person> personRelationList) {
-		String result = "";
+		String result;
 		if (personRelationList == null || personRelationList.isEmpty()) {
 			result = "NONE";
 		}
 
 		else {
-			result = personRelationList.stream().filter(p -> p != null).map(Person::toString)
+			result = personRelationList.stream().filter(Objects::nonNull).map(Person::toString)
 					.collect(Collectors.joining(" "));
 		}
 

@@ -14,7 +14,7 @@ class PersonTest {
 	static Family family = new Family();
 
 	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
+	static void setUpBeforeClass() {
 		family.buildInitialTree("./src/main/resources/InitialTree.txt");
 	}
 
@@ -71,7 +71,7 @@ class PersonTest {
 		mother.addChild(childC);
 
 		assertTrue(childB.getSiblings().contains(childC));
-		assertTrue(childB.getSiblings().size() == 1);
+		assertEquals(1, childB.getSiblings().size());
 	}
 
 	@Test

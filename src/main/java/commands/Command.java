@@ -19,7 +19,7 @@ public abstract class Command {
 	public static class Factory{
 		public static Command create(String[] tokens, Family family) {
 			String commandName = tokens[0];
-			List<String> arguments = new LinkedList<String>(Arrays.asList(tokens));
+			List<String> arguments = new LinkedList<>(Arrays.asList(tokens));
 			arguments.remove(0);
 			Command command;
 			switch (commandName) {

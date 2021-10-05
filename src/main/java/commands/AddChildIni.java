@@ -14,35 +14,30 @@ public class AddChildIni extends Command {
 	@Override
 	public String execute() {
 		// ADD_CHILD "Mother's-name" "Child's-name" "Gender"
-        String result = "";
+        String result;
 		if (arguments.size() != 3) {
 			result = "Invalid number of arugments to ADD_CHILD";
-			return result;
 		} else {
 			String motherName = arguments.get(0);
 			String childName = arguments.get(1);
 			String gender = arguments.get(2);
 			Person mother = family.personMap.get(motherName);
 			result = validateMother(mother);
-			if(!result.isEmpty()) {
-				return result;
-			}
-			else {
+			if (result.isEmpty()) {
 				Person child;
 				if (gender.equals("Male") || gender.equals("Female")) {
-					child = new Person(childName,gender);
-				} 
-			    else {
+					child = new Person(childName, gender);
+				} else {
 					result = "CHILD_ADDITION_FAILED";
 					return result;
 				}
 
 				family.personMap.put(childName, child);
 				mother.addChild(child);
-				return result;
 			}
 
 		}
+		return result;
 
 	}
 	

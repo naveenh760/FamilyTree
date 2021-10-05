@@ -13,7 +13,7 @@ public class GetRelationship extends Command {
 
 	@Override
 	public String execute() {
-		String result = "";
+		String result;
 		if (arguments.size() != 2) {
 			result = "Invalid number of arguments to GET_RELATIONSHIP";
 			return result;

@@ -1,7 +1,7 @@
-package familyTree;
+package com.geektrust.family.tree.main;
 
 import java.io.*;
-import utility.DataReader;
+import com.geektrust.family.tree.utility.DataReader;
 
 public class MainPgm {
 

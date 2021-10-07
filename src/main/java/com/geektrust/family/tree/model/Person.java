@@ -1,4 +1,4 @@
-package model;
+package com.geektrust.family.tree.model;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -16,7 +16,7 @@ public class Person {
 	String name;
 	Gender gender;
 	Person mother;
-	List<Person> children;
+	public List<Person> children;
 	Person spouse;
 
 	public Person(String name, String gender) {
@@ -25,7 +25,7 @@ public class Person {
 		this.children = new ArrayList<>();
 	}
 
-	protected Person getMother() {
+	public Person getMother() {
 		return mother;
 	}
 

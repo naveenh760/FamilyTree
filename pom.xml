@@ -28,7 +28,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<!-- This is main class of your program which will be executed -->
-							<mainClass>familyTree.MainPgm</mainClass>
+							<mainClass>com.geektrust.family.tree.main.MainPgm</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

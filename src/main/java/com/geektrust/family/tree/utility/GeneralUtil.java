@@ -1,4 +1,4 @@
-package utility;
+package com.geektrust.family.tree.utility;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package model;
+package com.geektrust.family.tree.model;
 
 public enum Gender {
 

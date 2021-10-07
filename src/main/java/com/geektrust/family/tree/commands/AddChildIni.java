@@ -1,9 +1,9 @@
-package commands;
+package com.geektrust.family.tree.commands;
 
 import java.util.List;
 
-import familyTree.Family;
-import model.Person;
+import com.geektrust.family.tree.main.Family;
+import com.geektrust.family.tree.model.Person;
 
 public class AddChildIni extends Command {
 

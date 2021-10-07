@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import commands.Command;
-import familyTree.Family;
+import com.geektrust.family.tree.commands.Command;
+import com.geektrust.family.tree.main.Family;
 
 class CommandsTest {
 

@@ -1,12 +1,12 @@
-package familyTree;
+package com.geektrust.family.tree.main;
 
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import commands.Command;
-import model.Person;
-import utility.DataReader;
+import com.geektrust.family.tree.commands.Command;
+import com.geektrust.family.tree.model.Person;
+import com.geektrust.family.tree.utility.DataReader;
 
 public class Family {
 

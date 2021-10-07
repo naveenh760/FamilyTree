@@ -1,10 +1,10 @@
-package commands;
+package com.geektrust.family.tree.commands;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import familyTree.Family;
+import com.geektrust.family.tree.main.Family;
 
 public abstract class Command {
     

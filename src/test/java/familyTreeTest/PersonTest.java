@@ -6,8 +6,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import familyTree.Family;
-import model.Person;
+import com.geektrust.family.tree.main.Family;
+import com.geektrust.family.tree.model.Person;
 
 class PersonTest {
 
@@ -26,41 +26,8 @@ class PersonTest {
 		assertTrue(mother.getChildren().contains(child));
 	}
 
-	@Test
-	void testGetChildren() {
-		Person mother = new Person("A", "Female");
-		Person childB = new Person("B", "Male");
-		Person childC = new Person("C", "Female");
-		mother.addChild(childB);
-		mother.addChild(childC);
 
-		assertTrue(mother.getChildren().contains(childB));
-		assertTrue(mother.getChildren().contains(childC));
-	}
 
-	@Test
-	void testGetSons() {
-		Person mother = new Person("A", "Female");
-		Person childB = new Person("B", "Male");
-		Person childC = new Person("C", "Female");
-		mother.addChild(childB);
-		mother.addChild(childC);
-
-		assertTrue(mother.getSons().contains(childB));
-		assertFalse(mother.getSons().contains(childC));
-	}
-
-	@Test
-	void testGetDaughters() {
-		Person mother = new Person("A", "Female");
-		Person childB = new Person("B", "Male");
-		Person childC = new Person("C", "Female");
-		mother.addChild(childB);
-		mother.addChild(childC);
-
-		assertTrue(mother.getDaughters().contains(childC));
-		assertFalse(mother.getDaughters().contains(childB));
-	}
 
 	@Test
 	void testGetSiblings() {

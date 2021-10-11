@@ -7,17 +7,18 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SiblingsRelationShipTest {
+class BrotherRelationshipTest {
 
     @Test
     void getRelatedPersons() {
         Person mother = new Person("A", "Female");
         Person childB = new Person("B", "Male");
         Person childC = new Person("C", "Female");
+        Person childD = new Person("D", "Male");
         mother.addChild(childB);
         mother.addChild(childC);
-        List<Person> siblings = RelationshipFactory.create("Siblings").getRelatedPersons(childB);
-        assertTrue(siblings.contains(childC));
-        assertEquals(1, siblings.size());
+        mother.addChild(childD);
+        List<Person> brothers = RelationshipFactory.create("Brother").getRelatedPersons(childC);
+        assertTrue(brothers.contains(childD));
     }
 }

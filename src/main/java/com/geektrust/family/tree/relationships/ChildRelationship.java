@@ -11,7 +11,7 @@ public class ChildRelationship implements PersonRelationship{
             return RelationshipFactory.create("Child")
                     .getRelatedPersons(p.getSpouse());
         } else {
-            return p.children;
+            return p.getChildren();
         }
     }
 }

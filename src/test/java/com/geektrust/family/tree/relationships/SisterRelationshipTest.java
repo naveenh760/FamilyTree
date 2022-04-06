@@ -11,13 +11,10 @@ class SisterRelationshipTest {
 
     @Test
     void getRelatedPersons() {
-        Person mother = new Person("A", "Female");
-        Person childB = new Person("B", "Male");
-        Person childC = new Person("C", "Female");
-        Person childD = new Person("D", "Male");
-        mother.addChild(childB);
-        mother.addChild(childC);
-        mother.addChild(childD);
+        Person mother = Person.builder().name("A").gender("Female").build();
+        Person childB = Person.builder().name("B").gender("Male").mother(mother).build();
+        Person childC = Person.builder().name("C").gender("Female").mother(mother).build();
+        Person childD = Person.builder().name("D").gender("Male").mother(mother).build();
         List<Person> sisters = RelationshipFactory.create("Sister").getRelatedPersons(childB);
         assertTrue(sisters.contains(childC));
     }

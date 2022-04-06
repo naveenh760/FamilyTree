@@ -21,19 +21,22 @@ public class AddChildIni extends Command {
 			String motherName = arguments.get(0);
 			String childName = arguments.get(1);
 			String gender = arguments.get(2);
-			Person mother = family.personMap.get(motherName);
+			Person mother = family.getPersonMap().get(motherName);
 			result = validateMother(mother);
 			if (result.isEmpty()) {
 				Person child;
 				if (gender.equals("Male") || gender.equals("Female")) {
-					child = new Person(childName, gender);
+					child = Person.builder()
+							.name(childName)
+							.gender(gender)
+							.mother(mother)
+							.build();
 				} else {
 					result = "CHILD_ADDITION_FAILED";
 					return result;
 				}
 
-				family.personMap.put(childName, child);
-				mother.addChild(child);
+				family.getPersonMap().put(childName, child);
 			}
 
 		}

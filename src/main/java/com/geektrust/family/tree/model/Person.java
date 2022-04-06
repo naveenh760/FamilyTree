@@ -1,5 +1,7 @@
 package com.geektrust.family.tree.model;
 
+import lombok.Builder;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,24 +15,25 @@ public class Person {
 	 * 
 	 */
 
-	String name;
-	Gender gender;
-	Person mother;
-	public List<Person> children;
-	Person spouse;
+	private String name;
+	private Gender gender;
+	private Person mother;
+	private List<Person> children;
+	private Person spouse;
 
-	public Person(String name, String gender) {
+	@Builder
+	private Person(String name, String gender,Person mother) {
 		this.name = name;
 		this.gender = gender.equals("Male") ? Gender.Male : Gender.Female;
-		this.children = new ArrayList<>();
+		this.mother = mother;
+		this.setChildren(new ArrayList<>());
+		if(mother != null){
+			mother.addChild(this);
+		}
 	}
 
 	public Person getMother() {
 		return mother;
-	}
-
-	protected void setMother(Person mother) {
-		this.mother = mother;
 	}
 
 	public Person getSpouse() {
@@ -50,8 +53,7 @@ public class Person {
 	}
 
 	public void addChild(Person child) {
-		children.add(child);
-		child.setMother(this);
+		getChildren().add(child);
 	}
 
 
@@ -79,4 +81,11 @@ public class Person {
 		return this.name.hashCode();
 	}
 
+	public List<Person> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<Person> children) {
+		this.children = children;
+	}
 }

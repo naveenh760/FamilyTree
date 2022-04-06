@@ -11,10 +11,10 @@ import com.geektrust.family.tree.utility.DataReader;
 public class Family {
 
 	public Family() {
-		personMap = new HashMap<>();
+		setPersonMap(new HashMap<>());
 	}
 
-	public Map<String, Person> personMap;
+	private Map<String, Person> personMap;
 
 	public static void setSpouseRelation(Person husband, Person wife) {
 		wife.setSpouse(husband);
@@ -25,7 +25,6 @@ public class Family {
 
 		try {
 			File file = new File(fileName);
-			// System.out.println(file.getAbsolutePath());
 			DataReader reader = new DataReader(file);
 			readCommands(reader);
 		} catch (IOException e) {
@@ -60,4 +59,11 @@ public class Family {
 		return result;
 	}
 
+	public Map<String, Person> getPersonMap() {
+		return personMap;
+	}
+
+	public void setPersonMap(Map<String, Person> personMap) {
+		this.personMap = personMap;
+	}
 }

@@ -22,8 +22,8 @@ public class GetRelationship extends Command {
 		} else {
 			String personName = arguments.get(0);
 			String relationship = arguments.get(1);
-			if (family.personMap.containsKey(personName)) {
-				Person person = family.personMap.get(personName);
+			if (family.getPersonMap().containsKey(personName)) {
+				Person person = family.getPersonMap().get(personName);
 				List<Person> personRelationList;
 
 				try {

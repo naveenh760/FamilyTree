@@ -11,11 +11,9 @@ class DaughterRelationshipTest {
 
     @Test
     void getRelatedPersons() {
-        Person mother = new Person("A", "Female");
-        Person childB = new Person("B", "Male");
-        Person childC = new Person("C", "Female");
-        mother.addChild(childB);
-        mother.addChild(childC);
+        Person mother = Person.builder().name("A").gender("Female").build();
+        Person childB = Person.builder().name("B").gender("Male").mother(mother).build();
+        Person childC = Person.builder().name("C").gender("Female").mother(mother).build();
         List<Person> daughters = RelationshipFactory.create("Daughter").getRelatedPersons(mother);
         assertTrue(daughters.contains(childC));
         assertFalse(daughters.contains(childB));

@@ -13,7 +13,7 @@ public class AddSpouse extends Command {
 
 	@Override
 	public String execute() {
-		// ADDS_SPOUSE "Husband-Name" "Wife-Name"
+		// ADD_SPOUSE "Husband-Name" "Wife-Name"
         String result = "";
 		if (arguments.size() != 2) {
 			result = "Invalid number of arguments to ADD_SPOUSE";
@@ -23,18 +23,24 @@ public class AddSpouse extends Command {
 			Person husband;
 			Person wife;
 
-			if (family.personMap.containsKey(husbandName)) {
-				husband = family.personMap.get(husbandName);
+			if (family.getPersonMap().containsKey(husbandName)) {
+				husband = family.getPersonMap().get(husbandName);
 			} else {
-				husband = new Person(husbandName,"Male");
-				family.personMap.put(husbandName, husband);
+				husband = Person.builder()
+						.name(husbandName)
+						.gender("Male")
+						.build();
+				family.getPersonMap().put(husbandName, husband);
 			}
 
-			if (family.personMap.containsKey(wifeName)) {
-				wife = family.personMap.get(wifeName);
+			if (family.getPersonMap().containsKey(wifeName)) {
+				wife = family.getPersonMap().get(wifeName);
 			} else {
-				wife = new Person(wifeName, "Female");
-				family.personMap.put(wifeName, wife);
+				wife = Person.builder()
+						.name(wifeName)
+						.gender("Female")
+						.build();
+				family.getPersonMap().put(wifeName, wife);
 			}
 
 			Family.setSpouseRelation(husband, wife);

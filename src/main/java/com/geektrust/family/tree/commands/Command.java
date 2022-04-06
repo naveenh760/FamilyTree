@@ -35,6 +35,10 @@ public abstract class Command {
 			case "GET_RELATIONSHIP":
 				command = new GetRelationship(arguments, family);
 				break;
+
+				case "ADD_SPOUSE1":
+					command = new AddSpouse1(arguments,family);
+					break;
 			default:
 				System.out.println("Invalid command");
 				command = null;
